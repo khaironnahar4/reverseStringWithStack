@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse string with stack</title>
+    <script>
+        let array = [];
+        let size = array.length;
+        let max = 5;
+        function push(value) {
+            array[size] = value;
+            size++;
+        }
+        function pop() {
+            let lastElement = array[size - 1];
+            size--;
+            array.length = size;
+            return lastElement;
+        }
+        function reverse(item) {
+            for (let i = 0; i < item.length; i++) {
+                push(item[i]);
+            }
+            for (let i = 0; i < item.length; i++) {
+                item[i] = pop();
+            }
+        }
+        function add() {
+            let str = document.getElementById('value').value;
+            str = str.split("");
+            reverse(str);
+            console.warn(str.join(""));
+            document.getElementById('value').value="";
+        }
+
+    </script>
+</head>
+
+<body>
+    <div style="margin: auto; width: 300px;">
+    <h3>Reverse String</h3>
+    <input type="text" id="value" placeholder="String" style="margin-bottom: 20px;">
+    <button onclick="add()" style="display: block;">Add String</button>
+    </div>
+</body>
+
+</html>
